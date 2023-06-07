@@ -1,12 +1,11 @@
 import random
 
 
-
 def intro():
   print("----------------------------------------------------------\nWelcome to the Super Awesome Number Guessing Game!\n----------------------------------------------------------\n\nThe rules are very complicated, so listen up!\n\nYou will be asked to guess a number between 1 and 10. Type your guess and hit \"Enter\".\nRULE #1: You are expected to enter a whole number. Do not enter a decimal or we shall say \"Ni!\" to you.\nRULE #2: Only use numbers. Do not spell out your guess or we shall say \"Ni!\" to you.\nRULE #3: Guess a number between 1 and 10 or we shall say \"Ni!\" to you.\n\n\n\nLet us begin!\n")
   
 def game(high_score):
-  solution = random.randrange(0,11)
+  solution = random.randrange(1,10)
   tries = 1
   ni_count = 0
   if high_score == 0:
@@ -42,6 +41,8 @@ def game(high_score):
           return high_score
         elif tries < high_score:
           high_score = tries
+          return high_score
+        elif tries > high_score:
           return high_score
 
   
