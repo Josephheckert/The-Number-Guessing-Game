@@ -5,7 +5,7 @@ def intro():
   print("----------------------------------------------------------\nWelcome to the Super Awesome Number Guessing Game!\n----------------------------------------------------------\n\nThe rules are very complicated, so listen up!\n\nYou will be asked to guess a number between 1 and 10. Type your guess and hit \"Enter\".\nRULE #1: You are expected to enter a whole number. Do not enter a decimal or we shall say \"Ni!\" to you.\nRULE #2: Only use numbers. Do not spell out your guess or we shall say \"Ni!\" to you.\nRULE #3: Guess a number between 1 and 10 or we shall say \"Ni!\" to you.\n\n\n\nLet us begin!\n")
   
 def game(high_score):
-  solution = random.randrange(1,10)
+  solution = random.randrange(1,11)
   tries = 1
   ni_count = 0
   if high_score == 0:
@@ -36,15 +36,9 @@ def game(high_score):
       else:
         tries += 0
         print("\n\nYou got it! It only took you {} guess(es), and we only had to say \"Ni!\" to you {} times!\n\n\n Nice job!".format(tries,ni_count))
-        if high_score == 0:
+        if high_score == 0 or tries < high_score:
           high_score = tries
-          return high_score
-        elif tries < high_score:
-          high_score = tries
-          return high_score
-        elif tries > high_score:
-          return high_score
-
+        return high_score
   
 def start_game():
   play = "y"
