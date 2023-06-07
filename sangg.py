@@ -5,11 +5,10 @@ import random
 def intro():
   print("----------------------------------------------------------\nWelcome to the Super Awesome Number Guessing Game!\n----------------------------------------------------------\n\nThe rules are very complicated, so listen up!\n\nYou will be asked to guess a number between 1 and 10. Type your guess and hit \"Enter\".\nRULE #1: You are expected to enter a whole number. Do not enter a decimal or we shall say \"Ni!\" to you.\nRULE #2: Only use numbers. Do not spell out your guess or we shall say \"Ni!\" to you.\nRULE #3: Guess a number between 1 and 10 or we shall say \"Ni!\" to you.\n\n\n\nLet us begin!\n")
   
-def game():
-  solution = random.randrange(1,10)
+def game(high_score):
+  solution = random.randrange(0,11)
   tries = 1
   ni_count = 0
-  high_score = 0
   if high_score == 0:
     print("The score to beat is:\nThere are no scores yet!\nGood luck!\n")
   else:  
@@ -37,19 +36,22 @@ def game():
         guess = input("What is your next guess?    ")
       else:
         tries += 0
+        print("\n\nYou got it! It only took you {} guess(es), and we only had to say \"Ni!\" to you {} times!\n\n\n Nice job!".format(tries,ni_count))
         if high_score == 0:
           high_score = tries
+          return high_score
         elif tries < high_score:
           high_score = tries
-        print("\n\nYou got it! It only took you {} guess(es), and we only had to say \"Ni!\" to you {} times!\n\n\n Nice job!".format(tries,ni_count))
+          return high_score
 
   
 def start_game():
   play = "y"
   tries = 1
+  high_score = 0
   intro()
   while play == "y":
-    game()
+    high_score = game(high_score)
     play = input("Would you like to play? Y/N    ").lower()
   else: 
     print("Thanks for playing!")
